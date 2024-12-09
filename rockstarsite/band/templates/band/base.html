@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Declares the document type and specifies the language as English -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Specifies the character encoding for the HTML document -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ensures the page is responsive and adjusts layout based on the device's width -->
+
+    <title>{% block title %}The Rockstars{% endblock %}</title>
+    <!-- Defines a block for the page title that can be overridden by child templates -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Links to the Bootstrap CSS for styling -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Links to a Google Font for custom typography -->
+
+    <style>
+        body {
+            padding-top: 56px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Adds padding to the top of the body and sets the font family */
+
+        .navbar {
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        /* Styles the navbar to be sticky at the top and ensures it's always visible */
+
+        .footer {
+            background: #222;
+            color: white;
+            padding: 20px 0;
+        }
+        /* Styles the footer with a dark background and white text, with padding */
+
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        /* Styles the footer links with a golden color and no underline */
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        /* Adds an underline to the footer links on hover */
+
+        .card-img-top.clickable-image {
+            transition: filter 0.3s ease;
+        }
+        /* Adds a smooth transition effect to the card image filter */
+
+        .card-img-top.clickable-image:active {
+            filter: sepia(100%);
+        }
+        /* Applies a sepia filter to the card image when clicked */
+    </style>
+    <!-- Internal CSS styles for custom elements -->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Defines a dark-themed navbar that expands on large screens -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">The Rockstars</a>
+            <!-- Navbar brand linking to the home page -->
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Toggler button for collapsing the navbar on smaller screens -->
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Navigation links aligned to the left -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <!-- Link to the home page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'band_members' %}">Band Members</a>
+                    </li>
+                    <!-- Link to the band members page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'events' %}">Events</a>
+                    </li>
+                    <!-- Link to the events page -->
+                </ul>
+
+                <ul class="navbar-nav">
+                    <!-- Navigation links aligned to the right -->
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        <!-- Link to logout if the user is authenticated -->
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <!-- Link to login if the user is not authenticated -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                        <!-- Link to register if the user is not authenticated -->
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar structure and links -->
+
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Container for the main content of the page, defined in child templates -->
+
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <p>&copy; 2024 The Rockstars. All rights reserved.</p>
+            <!-- Copyright information -->
+
+            <p>
+                Follow us on:
+                <a href="https://twitter.com/therockstars" target="_blank">Twitter</a> |
+                <a href="https://instagram.com/therockstars" target="_blank">Instagram</a> |
+                <a href="https://facebook.com/therockstars" target="_blank">Facebook</a>
+            </p>
+            <!-- Social media links -->
+
+            <p>
+                Contact us: <a href="mailto:info@therockstars.co.za">info@therockstars.co.za</a>
+                | <a href="{% url 'home' %}">Home</a>
+            </p>
+            <!-- Contact information and link to the home page -->
+        </div>
+    </footer>
+    <!-- Footer structure -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Link to Bootstrap JavaScript for interactive components -->
+</body>
+</html>
+

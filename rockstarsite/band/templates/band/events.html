@@ -1,0 +1,83 @@
+{% extends 'band/base.html' %}
+<!-- Extends the base template for the 'band' app -->
+
+{% load static %}
+<!-- Loads the static files template tag for including static files like images -->
+
+{% block title %}Events{% endblock %}
+<!-- Sets the title of the page to 'Events' -->
+
+{% block content %}
+<!-- Starts the content block -->
+
+<div class="jumbotron text-center" style="background-image: url('{% static 'images/background3.jpg' %}'); background-size: cover; background-position: center; color: white;">
+    <!-- Jumbotron with a background image, centered text, and white text color -->
+    <h1 class="display-4" style="font-family: 'Montserrat', sans-serif; color: #FFD700;">Upcoming Events</h1>
+    <!-- Large heading with a custom font and golden color -->
+    <p class="lead">Don't miss out on our amazing events! Book your tickets now.</p>
+    <!-- Lead paragraph -->
+</div>
+
+<div class="container mt-5">
+    <!-- Main container with a top margin -->
+    <div class="row">
+        <!-- Creates a row for the event cards -->
+
+        <div class="col-md-6 mb-3">
+            <!-- A column that takes up 6 out of 12 parts on medium-sized screens, with a bottom margin -->
+            <div class="card h-100">
+                <!-- A card that takes the full height of the column -->
+                <img src="{% static 'images/rock2.jpg' %}" class="card-img-top img-fluid clickable-image" alt="Crazy Rock Festival 2025">
+                <!-- Static image for the card, with a class for a clickable image effect and alt text -->
+                <div class="card-body d-flex flex-column">
+                    <!-- Card body container with flex column layout -->
+                    <h4 class="card-title" style="font-family: 'Montserrat', sans-serif; color: #FF4500;">Crazy Rock Festival 2025</h4>
+                    <!-- Title of the card with a custom font and color -->
+                    <h6 class="card-subtitle mb-2 text-muted">Date: 12th January 2025</h6>
+                    <!-- Subtitle of the card with a muted text color -->
+                    <p class="card-text">Join us at the Cape Town Stadium for an unforgettable experience.</p>
+                    <!-- Description of the event -->
+                    <p class="card-text"><small class="text-muted">Location: Cape Town Stadium</small></p>
+                    <!-- Location of the event with a smaller text size -->
+                    <p class="card-text"><strong>Price: R100</strong></p>
+                    <!-- Price of the event in bold -->
+                    <a href="#" class="btn btn-primary mt-auto">Buy Ticket</a>
+                    <!-- Button to buy tickets, aligned to the bottom of the card -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeats the same structure for another event -->
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <img src="{% static 'images/summer2.jpg' %}" class="card-img-top img-fluid clickable-image" alt="Summer Jam">
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title" style="font-family: 'Montserrat', sans-serif; color: #1E90FF;">Summer Jam</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Date: 25th February 2025</h6>
+                    <p class="card-text">Enjoy the summer vibes with live music at Green Point Park.</p>
+                    <p class="card-text"><small class="text-muted">Location: Green Point Park</small></p>
+                    <p class="card-text"><strong>Price: R100</strong></p>
+                    <a href="#" class="btn btn-primary mt-auto">Buy Ticket</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeats the same structure for another event -->
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <img src="{% static 'images/autumn.jpg' %}" class="card-img-top img-fluid clickable-image" alt="Autumn Vibes Concert">
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title" style="font-family: 'Montserrat', sans-serif; color: #32CD32;">Autumn Vibes Concert</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Date: 15th March 2025</h6>
+                    <p class="card-text">Join us for an evening of music amidst the beauty of Kirstenbosch Gardens.</p>
+                    <p class="card-text"><small class="text-muted">Location: Kirstenbosch Gardens</small></p>
+                    <p class="card-text"><strong>Price: R100</strong></p>
+                    <a href="#" class="btn btn-primary mt-auto">Buy Ticket</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!-- Ends the content block -->
