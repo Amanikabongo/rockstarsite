@@ -1,0 +1,72 @@
+{% extends 'band/base.html' %}
+<!-- Extends the base template for the 'band' app -->
+
+{% block title %}Band Members{% endblock %}
+<!-- Sets the title of the page to 'Band Members' -->
+
+{% block content %}
+<!-- Starts the content block -->
+
+<div class="container mt-5" style="background-color: black; color: white; padding: 20px; border-radius: 10px;">
+    <!-- A container with a black background, white text, padding, and rounded corners -->
+    <h1>Band Members</h1>
+    <!-- Heading for the band members section -->
+
+    <div class="row">
+        <!-- Creates a row for the band member cards -->
+
+        <div class="col-md-6 mb-3">
+            <!-- A column that takes up 6 out of 12 parts on medium-sized screens, with a bottom margin -->
+            <div class="card bg-dark text-white">
+                <!-- A dark-themed card with white text -->
+                <div class="card-body">
+                    <!-- Card body container -->
+                    <h4 class="card-title">Amani Kabongo</h4>
+                    <!-- Title of the card (Band member's name) -->
+                    <h6 class="card-subtitle mb-2 text-muted">Instrument: Lead Guitar</h6>
+                    <!-- Subtitle of the card (Instrument played by the band member) -->
+                    <p class="card-text">Amani is the lead guitarist and founder of the band, known for his amazing solos.</p>
+                    <!-- Description of the band member -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <!-- Repeats the same structure for another band member -->
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h4 class="card-title">Nelisa Siko</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Instrument: Drums</h6>
+                    <p class="card-text">Nelisa provides the beat for the band with her energetic drumming skills.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <!-- Repeats the same structure for another band member -->
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h4 class="card-title">Mike Karangwa</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Instrument: Bass Guitar</h6>
+                    <p class="card-text">Mike holds down the low end, bringing depth to the band's sound with his bass guitar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <!-- Repeats the same structure for another band member -->
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h4 class="card-title">Millicent</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Instrument: Vocals</h6>
+                    <p class="card-text">Millicent AKA Millys is the lead vocalist, captivating the audience with her powerful voice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- Ends the content block -->
+
+
+
