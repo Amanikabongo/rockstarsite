@@ -1,3 +1,4 @@
+# Import some neccessary moduls
 from django.urls import path
 from . import views
 
