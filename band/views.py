@@ -5,7 +5,7 @@ from .models import BandMember, Event
 from .forms import UserRegisterForm
 
 
-def home(request):
+def render_home_page(request):
     """
     Renders the home page.
 
@@ -19,7 +19,7 @@ def home(request):
 
 
 @login_required
-def band_members(request):
+def display_band_members(request):
     """
     Displays a list of band members.
 
@@ -29,12 +29,12 @@ def band_members(request):
     Returns:
         HTTP response rendering the band members page with a list of band members.
     """
-    members = BandMember.objects.all()
-    return render(request, 'band/band_members.html', {'members': members})
+    band_members_list = BandMember.objects.all()
+    return render(request, 'band/band_members.html', {'band_members_list': band_members_list})
 
 
 @login_required
-def events(request):
+def display_upcoming_events(request):
     """
     Displays a list of upcoming events.
 
@@ -44,11 +44,11 @@ def events(request):
     Returns:
         HTTP response rendering the events page with a list of upcoming events.
     """
-    events = Event.objects.all()
-    return render(request, 'band/events.html', {'events': events})
+    upcoming_events = Event.objects.all()
+    return render(request, 'band/events.html', {'upcoming_events': upcoming_events})
 
 
-def register(request):
+def register_user(request):
     """
     Handles user registration.
 
@@ -59,21 +59,21 @@ def register(request):
         HTTP response rendering the registration page, or redirects to events page after successful registration.
     """
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
+        registration_form = UserRegisterForm(request.POST)
+        if registration_form.is_valid():
+            registration_form.save()
+            username = registration_form.cleaned_data.get('username')
+            password = registration_form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('events')  # Redirect to the events page
     else:
-        form = UserRegisterForm()
-    return render(request, 'registration/register.html', {'form': form})
+        registration_form = UserRegisterForm()
+    return render(request, 'registration/register.html', {'registration_form': registration_form})
 
 
 @login_required
-def profile(request):
+def display_user_profile(request):
     """
     Displays the user's profile.
 
@@ -84,4 +84,5 @@ def profile(request):
         HTTP response rendering the profile page.
     """
     return render(request, 'registration/profile.html')
+
 
