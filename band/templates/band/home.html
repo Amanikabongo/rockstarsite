@@ -1,0 +1,68 @@
+{% extends 'band/base.html' %}
+<!-- Extends the base template for the 'band' app -->
+
+{% load static %}
+<!-- Loads the static files template tag for including static files like images -->
+
+{% block title %}Home{% endblock %}
+<!-- Sets the title of the page to 'Home' -->
+
+{% block content %}
+<!-- Starts the content block -->
+
+<div style="background-image: url('{% static 'images/background1.jpg' %}'); background-size: cover; background-position: center; min-height: 100vh; color: white;">
+    <!-- A div with a background image, covering the entire viewport height, with centered background position and white text color -->
+    <div class="jumbotron text-center" style="background: rgba(0, 0, 0, 0.5); padding: 50px 0;">
+        <!-- Jumbotron with centered text, semi-transparent black background, and padding -->
+        <h1 class="display-4">Welcome to The Rockstars</h1>
+        <!-- Large heading with the text 'Welcome to The Rockstars' -->
+        <p class="lead">Your favorite band, bringing you the best music.</p>
+        <!-- Lead paragraph with a brief description -->
+        <hr class="my-4">
+        <!-- Horizontal rule with vertical margin -->
+        <p>Check out our band members and upcoming events.</p>
+        <!-- Paragraph prompting users to check out band members and events -->
+        <a class="btn btn-primary btn-lg" href="{% url 'band_members' %}" role="button">Band Members</a>
+        <!-- Button linking to the band members page -->
+        <a class="btn btn-secondary btn-lg" href="{% url 'events' %}" role="button">Events</a>
+        <!-- Button linking to the events page -->
+    </div>
+
+    <div class="container text-center mt-4">
+        <!-- Container for additional content, centered with top margin -->
+        <h2>Welcome to Rockstar Events</h2>
+        <!-- Heading for the events section -->
+        <p>Please login or register for our event updates.</p>
+        <!-- Prompt for users to login or register -->
+        <div class="mt-4">
+            {% if not user.is_authenticated %}
+                <!-- Checks if the user is not authenticated -->
+                <a class="btn btn-outline-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+                <!-- Button linking to the login page -->
+                <a class="btn btn-outline-secondary btn-lg" href="{% url 'register' %}" role="button">Register</a>
+                <!-- Button linking to the registration page -->
+            {% endif %}
+        </div>
+
+        <div class="mt-4">
+            <!-- Container for the newsletter subscription form -->
+            <h3>Subscribe to Our Newsletter</h3>
+            <!-- Heading for the newsletter section -->
+            <form action="#" method="post">
+                {% csrf_token %}
+                <!-- CSRF token for security -->
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                    <!-- Email input field -->
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Subscribe</button>
+                <!-- Submit button for the form -->
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!-- Ends the content block -->
+
+
