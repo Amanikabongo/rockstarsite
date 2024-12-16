@@ -1,3 +1,4 @@
+# Import some neccessary moduls
 from django.urls import path
 from . import views
 
@@ -17,7 +18,7 @@ urlpatterns = [
     # Register page URL
     path('register/', views.register, name='register'),
 
-    # Profile page URL
+    # Profile page URL 
     path('profile/', views.profile, name='profile'),
 ]
 
